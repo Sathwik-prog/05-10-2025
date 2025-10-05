@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background: #f8fbff;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding-top: 40px;
+      }
+
+      h2 {
+        color: #0b5394;
+      }
+
+      p {
+        font-size: 16px;
+        margin: 10px 0;
+      }
+
+      /* Gradient text style */
+      .gradient-text {
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Class in JavaScript</h2>
+    <p>Using static methods and inheritance to show student info.</p>
+
+    <p id="greeting" class="gradient-text"></p>
+    <p id="studentDetails" class="gradient-text"></p>
+    <p id="graduateMessage" class="gradient-text"></p>
+
+    <script>
+      // Parent class
+      class Student {
+        constructor(name, age) {
+          this.name = name;
+          this.age = age;
+        }
+
+        getInfo() {
+          return "Name: " + this.name + ", Age: " + this.age;
+        }
+
+        static sayHello() {
+          return "Hello Students!";
+        }
+      }
+
+      // Child class
+      class Graduate extends Student {
+        constructor(name, age, course) {
+          super(name, age);
+          this.course = course;
+        }
+
+        getGraduateInfo() {
+          return this.name + " studies " + this.course + " and is " + this.age + " years old.";
+        }
+
+        static welcomeStudent(student) {
+          return "Welcome " + student.name + " to the Graduation Program!";
+        }
+      }
+
+      // Create graduate object
+      let grad = new Graduate("Sathwik", 22, "Computer Science");
+
+      // Show outputs
+      document.getElementById("greeting").innerHTML = Student.sayHello();
+      document.getElementById("studentDetails").innerHTML = grad.getInfo();
+      document.getElementById("graduateMessage").innerHTML = Graduate.welcomeStudent(grad);
+    </script>
+  </body>
+</html>
